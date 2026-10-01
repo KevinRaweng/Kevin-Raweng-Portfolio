@@ -8,10 +8,11 @@ const LINKS = [
   { href: '#capstone', label: 'Capstone' },
   { href: '#projects', label: 'Projects' },
   { href: '#education', label: 'Education' },
-  { href: '#contact', label: 'Contact' },
 ]
 
-const SECTION_IDS = ['top', ...LINKS.map((l) => l.href.slice(1))]
+// 'contact' has no nav link of its own (the Get in touch CTA covers it), but it
+// still needs observing so the active-section logic doesn't stall on Education.
+const SECTION_IDS = ['top', ...LINKS.map((l) => l.href.slice(1)), 'contact']
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -59,12 +60,8 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
-          <a
-            href="/Kevin_Raweng_Anak_Usan_Resume.pdf"
-            download
-            className="btn btn-primary btn-sm rounded-none font-mono text-xs"
-          >
-            R&eacute;sum&eacute;
+          <a href="#contact" className="btn btn-primary btn-sm rounded-none font-mono text-xs">
+            Get in touch
           </a>
         </div>
 
@@ -91,12 +88,11 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="/Kevin_Raweng_Anak_Usan_Resume.pdf"
-              download
+              href="#contact"
               onClick={() => setOpen(false)}
               className="btn btn-primary btn-sm w-fit rounded-none font-mono text-xs"
             >
-              Download R&eacute;sum&eacute;
+              Get in touch
             </a>
           </div>
         </div>
