@@ -27,7 +27,7 @@ export default function Hero() {
             Kevin Raweng Anak Usan
           </h1>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-base-content/75 md:text-lg">
-            Five years in trust &amp; safety and operations, now building
+            Three years in trust &amp; safety and operations, now building
             full-stack, AI-integrated platforms for the construction industry,
             one blueprint at a time.
           </p>
