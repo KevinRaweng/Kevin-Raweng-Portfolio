@@ -1,6 +1,6 @@
 # Kevin Raweng Anak Usan: Portfolio
 
-**Live: [kevin-raweng-portfolio.vercel.app](https://kevin-raweng-portfolio.vercel.app/)**
+**Live: [kevinraweng.vercel.app](https://kevinraweng.vercel.app/)**
 
 Personal portfolio site. Vite + React + Tailwind CSS + DaisyUI.
 
