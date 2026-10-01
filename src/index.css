@@ -1,0 +1,124 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    /* No scroll-padding: the navbar is a floating overlay, and every section is
+       exactly one viewport tall with its content vertically centred inside
+       generous padding so sections align flush to the top of the viewport. */
+    /* `proximity` (not `mandatory`) so long sections like Experience stay
+       freely scrollable, but a nav jump or a nearby scroll settles on a
+       section edge instead of leaving it half off-screen. */
+    scroll-snap-type: y proximity;
+  }
+
+  body {
+    @apply bg-navy-900 font-body text-base-content antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+}
+
+@layer components {
+  /* Blueprint grid: thin gold lines, heavier line every 5th unit */
+  .blueprint-grid {
+    background-color: transparent;
+    background-image:
+      linear-gradient(rgba(201, 162, 75, 0.07) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201, 162, 75, 0.07) 1px, transparent 1px),
+      linear-gradient(rgba(201, 162, 75, 0.16) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(201, 162, 75, 0.16) 1px, transparent 1px);
+    background-size:
+      32px 32px,
+      32px 32px,
+      160px 160px,
+      160px 160px;
+  }
+
+  /* Each full-height section is a snap target, aligned under the sticky navbar. */
+  .snap-section {
+    scroll-snap-align: start;
+    scroll-snap-stop: normal;
+  }
+
+  .eyebrow {
+    @apply font-mono text-xs uppercase tracking-[0.25em] text-gold;
+  }
+
+  /* Corner-bracket frame, like a technical drawing viewport */
+  .bracket-frame {
+    position: relative;
+  }
+  .bracket-frame::before,
+  .bracket-frame::after {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border: 2px solid theme('colors.gold.DEFAULT');
+    pointer-events: none;
+  }
+  .bracket-frame::before {
+    top: -8px;
+    left: -8px;
+    border-right: 0;
+    border-bottom: 0;
+  }
+  .bracket-frame::after {
+    bottom: -8px;
+    right: -8px;
+    border-left: 0;
+    border-top: 0;
+  }
+  .bracket-frame > .bracket-extra::before,
+  .bracket-frame > .bracket-extra::after {
+    content: '';
+    position: absolute;
+    width: 28px;
+    height: 28px;
+    border: 2px solid theme('colors.gold.DEFAULT');
+    pointer-events: none;
+  }
+  .bracket-frame > .bracket-extra::before {
+    top: -8px;
+    right: -8px;
+    border-left: 0;
+    border-bottom: 0;
+  }
+  .bracket-frame > .bracket-extra::after {
+    bottom: -8px;
+    left: -8px;
+    border-right: 0;
+    border-top: 0;
+  }
+}
+
+@layer utilities {
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+    scroll-snap-type: none;
+  }
+  .reveal {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
