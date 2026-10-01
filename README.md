@@ -59,8 +59,17 @@ smooth scrolls at all. Don't remove it without re-testing every nav link.
 
 ## Deploy
 
-Vite builds a static site to `dist/`. Any static host works; Vercel and Netlify
-both auto-detect the framework (build `npm run build`, output `dist`).
+Hosted on Vercel. Pushing to `main` builds and deploys automatically; the
+framework preset is detected from Vite (build `npm run build`, output `dist`),
+so no `vercel.json` is needed and there are no environment variables to set.
+
+To deploy by hand, for instance if the Git integration is down:
+
+```bash
+npx vercel --prod
+```
+
+Vite builds a plain static site to `dist/`, so any static host will serve it.
 
 ## Extending
 
