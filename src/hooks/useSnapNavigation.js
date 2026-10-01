@@ -30,10 +30,15 @@ export function useSnapNavigation() {
       root.style.scrollSnapType = ''
     }
 
-    const scrollTo = (target, behavior) =>
-      target.scrollIntoView({ behavior, block: 'start' })
+    const scrollTo = (y, behavior) => window.scrollTo({ top: y, behavior })
 
-    const watchUntilSettled = (target) => {
+    // Chrome has no API to cancel a smooth scroll; scrolling instantly to the
+    // current position does it. Without this, a pending smooth scroll keeps
+    // running after the fallback jump and the two compound into an overshoot.
+    const cancelPendingScroll = () =>
+      window.scrollTo({ top: window.scrollY, behavior: 'instant' })
+
+    const watchUntilSettled = (targetY) => {
       const startedAt = performance.now()
       const startY = window.scrollY
       let lastY = startY
@@ -45,10 +50,11 @@ export function useSnapNavigation() {
         const y = window.scrollY
         const elapsed = performance.now() - startedAt
 
-        // Nothing has moved, so smooth scrolling isn't animating in this
-        // environment, so jump straight to the target instead.
+        // Nothing has moved, so smooth scrolling isn't animating here. Cancel
+        // anything still pending before jumping, or the two scrolls compound.
         if (y === startY && elapsed > START_GRACE_MS) {
-          scrollTo(target, 'instant')
+          cancelPendingScroll()
+          scrollTo(targetY, 'instant')
           restoreSnap()
           return
         }
@@ -90,16 +96,19 @@ export function useSnapNavigation() {
       const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches
 
       restoreSnap() // cancel any watcher still running from a previous click
+      cancelPendingScroll() // and any scroll that click left in flight
       root.style.scrollSnapType = 'none'
 
+      const targetY = target.offsetTop
+
       if (reduced) {
-        scrollTo(target, 'instant')
+        scrollTo(targetY, 'instant')
         restoreSnap()
         return
       }
 
-      scrollTo(target, 'smooth')
-      watchUntilSettled(target)
+      scrollTo(targetY, 'smooth')
+      watchUntilSettled(targetY)
     }
 
     document.addEventListener('click', onClick)
