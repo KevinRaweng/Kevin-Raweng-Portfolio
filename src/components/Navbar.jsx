@@ -8,11 +8,10 @@ const LINKS = [
   { href: '#capstone', label: 'Capstone' },
   { href: '#projects', label: 'Projects' },
   { href: '#education', label: 'Education' },
+  { href: '#contact', label: 'Contact' },
 ]
 
-// 'contact' has no nav link of its own (the Get in touch CTA covers it), but it
-// still needs observing so the active-section logic doesn't stall on Education.
-const SECTION_IDS = ['top', ...LINKS.map((l) => l.href.slice(1)), 'contact']
+const SECTION_IDS = ['top', ...LINKS.map((l) => l.href.slice(1))]
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
