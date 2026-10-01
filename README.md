@@ -1,8 +1,11 @@
 # Kevin Raweng Anak Usan: Portfolio
 
+**Live: [kevin-raweng-portfolio.vercel.app](https://kevin-raweng-portfolio.vercel.app/)**
+
 Personal portfolio site. Vite + React + Tailwind CSS + DaisyUI.
 
 Single scrolling page with anchor-linked, full-height sections and scroll-snap navigation.
+Deployed on Vercel; every push to `main` deploys automatically.
 
 ## Run
 
