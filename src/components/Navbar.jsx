@@ -59,8 +59,12 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
-          <a href="#contact" className="btn btn-primary btn-sm rounded-none font-mono text-xs">
-            Get in touch
+          <a
+            href="/Kevin_Raweng_Anak_Usan_Resume.pdf"
+            download
+            className="btn btn-primary btn-sm rounded-none font-mono text-xs"
+          >
+            R&eacute;sum&eacute;
           </a>
         </div>
 
@@ -87,11 +91,12 @@ export default function Navbar() {
               </a>
             ))}
             <a
-              href="#contact"
+              href="/Kevin_Raweng_Anak_Usan_Resume.pdf"
+              download
               onClick={() => setOpen(false)}
               className="btn btn-primary btn-sm w-fit rounded-none font-mono text-xs"
             >
-              Get in touch
+              Download R&eacute;sum&eacute;
             </a>
           </div>
         </div>
