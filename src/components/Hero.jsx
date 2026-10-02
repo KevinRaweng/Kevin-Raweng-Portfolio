@@ -4,7 +4,7 @@ import Reveal from './Reveal'
 // profile photo used to occupy and keeps the corner-bracket motif in the hero.
 const SPEC = [
   ['Location', 'Kuching, Sarawak, Malaysia'],
-  ['Focus', 'Full-stack · AI · Computer Vision'],
+  ['Focus', 'Full-stack · AI (computer vision, agents)'],
   ['Completes', '6 November 2026'],
   ['Open to', 'Junior developer roles'],
 ]
