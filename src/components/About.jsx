@@ -2,7 +2,7 @@ import Section from './Section'
 import Reveal from './Reveal'
 
 const STATS = [
-  { value: '5+ yrs', label: 'professional experience' },
+  { value: '3 yrs', label: 'trust & safety' },
   { value: '2 languages', label: 'EN / BM' },
   { value: '5 mo', label: 'capstone build' },
   { value: '2018', label: 'diploma (Mechatronics)' },
