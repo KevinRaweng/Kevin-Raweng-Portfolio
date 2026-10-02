@@ -56,7 +56,7 @@ export default function Contact() {
           download
           className="btn btn-primary btn-sm rounded-none font-mono text-xs"
         >
-          Download R&eacute;sum&eacute; (PDF)
+          Download Resume (PDF)
         </a>
         <p className="font-mono text-xs uppercase tracking-widest text-base-content/50">
           Kuching, Sarawak, Malaysia

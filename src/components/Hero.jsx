@@ -47,7 +47,7 @@ export default function Hero() {
               download
               className="btn btn-ghost rounded-none font-mono text-xs text-base-content/80 underline underline-offset-4 hover:text-gold"
             >
-              Download R&eacute;sum&eacute; (PDF)
+              Download Resume (PDF)
             </a>
           </div>
 
